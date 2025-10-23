@@ -10,6 +10,7 @@ export default function UsersPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // ✅ Fetch users from the API route
   const fetchUsers = async () => {
     try {
       const res = await fetch("/api/users", { cache: "no-store" });
@@ -28,7 +29,8 @@ export default function UsersPage() {
   useEffect(() => {
     fetchUsers();
   }, []);
-  
+
+  // ✅ Handle new user creation
   const handleUserCreated = async (newUser) => {
     try {
       const res = await fetch("/api/users", {
